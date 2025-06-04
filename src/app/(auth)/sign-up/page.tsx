@@ -166,7 +166,7 @@ export function RegisterPage() {
                                     control={form.control}
                                     render={({field}) => (
                                         <FormItem>
-                                            <FormLabel>Comfirm Password</FormLabel>
+                                            <FormLabel>Confirm Password</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     placeholder="**************"
