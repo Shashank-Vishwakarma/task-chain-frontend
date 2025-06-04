@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader2 } from "lucide-react"
 
 const signUpFormSchema = z.object({
     name: z.string({message: "name is required"}).min(1),
@@ -180,7 +181,12 @@ export function RegisterPage() {
                                 />
                             </div>
                             <Button type="submit" className="w-full hover:cursor-pointer">
-                                {form.formState.isSubmitting ? "Creating account..." : "Create account"}
+                                {form.formState.isSubmitting ? (
+                                    <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        {"Creating account..."}
+                                    </>
+                                ) : "Create account"}
                             </Button>
                         </form>
                     </Form>

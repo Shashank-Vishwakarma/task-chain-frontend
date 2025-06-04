@@ -10,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader2 } from "lucide-react"
 
 const loginFormSchema = z.object({
     email: z.string({message: "email is required"}).email(),
@@ -72,7 +73,12 @@ export function LoginPage() {
                                 </Link>
                             </div>
                             <Button type="submit" className="w-full hover:cursor-pointer">
-                                {form.formState.isSubmitting ? "Signing In..." : "Sign In"}
+                                {form.formState.isSubmitting ? (
+                                    <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        {"Signing in..."}
+                                    </>
+                                ) : "Sign In"}
                             </Button>
                         </form>
                     </Form>

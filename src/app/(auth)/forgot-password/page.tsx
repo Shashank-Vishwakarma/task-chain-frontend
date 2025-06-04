@@ -5,7 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -113,7 +113,12 @@ function ForgotPasswordPage() {
                                 />
                             </div>
                             <Button type="submit" className="w-full hover:cursor-pointer">
-                                {form.formState.isSubmitting ? "Resetting Password..." : "Reset Password"}
+                                {form.formState.isSubmitting ? (
+                                    <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        {"Resetting Password..."}
+                                    </>
+                                ) : "Reset Password"}
                             </Button>
                         </form>
                     </Form>
