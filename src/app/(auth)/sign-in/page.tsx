@@ -29,7 +29,7 @@ export function LoginPage() {
         }
     })
 
-    const { mutate } = useMutation({
+    const { mutate: signInWithGoogle } = useMutation({
         mutationFn: googleAuthAction,
         onSuccess: (data) => {
             console.log("data: ", data)
@@ -101,7 +101,7 @@ export function LoginPage() {
                     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
                         <GoogleLogin
                             onSuccess={(credentialResponse: CredentialResponse) => {
-                                mutate({credential: credentialResponse.credential, clientId: credentialResponse.clientId} as GoogleAuthProps)
+                                signInWithGoogle({credential: credentialResponse.credential, clientId: credentialResponse.clientId} as GoogleAuthProps)
                             }} 
                             onError={()=>{
                                 console.log("Google Login Failed")
